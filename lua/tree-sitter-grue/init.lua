@@ -13,7 +13,7 @@ function M.setup()
   local parser_config = parsers.get_parser_configs()
   parser_config.grue = {
     install_info = {
-      url = "https://github.com/joelgwebber/tree-sitter-grue",
+      url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
       files = { "src/parser.c" },
     },
     filetype = "grue",

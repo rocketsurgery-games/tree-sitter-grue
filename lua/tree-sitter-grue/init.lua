@@ -15,6 +15,7 @@ function M.setup()
     install_info = {
       url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
       files = { "src/parser.c" },
+      branch = "main",
     },
     filetype = "grue",
   }

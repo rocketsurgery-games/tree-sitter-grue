@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "builtin",
     "named": true,
     "fields": {}
@@ -20,6 +25,11 @@
     "fields": {}
   },
   {
+    "type": "effect",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -27,6 +37,14 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "binding_ref",
+          "named": true
+        },
+        {
+          "type": "entity_ref",
+          "named": true
+        },
         {
           "type": "keyword",
           "named": true
@@ -51,6 +69,16 @@
     }
   },
   {
+    "type": "operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "predicate",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -58,6 +86,14 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "binding_ref",
+          "named": true
+        },
+        {
+          "type": "entity_ref",
+          "named": true
+        },
         {
           "type": "keyword",
           "named": true
@@ -80,6 +116,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "special_form",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "string",
@@ -99,6 +140,10 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
           "type": "builtin",
           "named": true
         },
@@ -111,6 +156,10 @@
           "named": true
         },
         {
+          "type": "effect",
+          "named": true
+        },
+        {
           "type": "flag",
           "named": true
         },
@@ -119,14 +168,35 @@
           "named": true
         },
         {
-          "type": "unknown",
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
+        {
+          "type": "special_form",
+          "named": true
+        },
+        {
+          "type": "test_form",
           "named": true
         }
       ]
     }
   },
   {
+    "type": "test_form",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "%",
     "named": false
   },
   {
@@ -138,7 +208,47 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
     "type": "\\",
+    "named": false
+  },
+  {
+    "type": "all",
     "named": false
   },
   {
@@ -146,15 +256,43 @@
     "named": false
   },
   {
+    "type": "any",
+    "named": false
+  },
+  {
+    "type": "ask-about",
+    "named": false
+  },
+  {
+    "type": "ask-for",
+    "named": false
+  },
+  {
+    "type": "at?",
+    "named": false
+  },
+  {
     "type": "attack",
     "named": false
   },
   {
-    "type": "case",
+    "type": "before-action",
+    "named": false
+  },
+  {
+    "type": "binding_ref",
+    "named": true
+  },
+  {
+    "type": "blocked",
     "named": false
   },
   {
     "type": "clear-flag!",
+    "named": false
+  },
+  {
+    "type": "click",
     "named": false
   },
   {
@@ -170,7 +308,31 @@
     "named": true
   },
   {
+    "type": "cond",
+    "named": false
+  },
+  {
+    "type": "contents",
+    "named": false
+  },
+  {
+    "type": "context?",
+    "named": false
+  },
+  {
+    "type": "default",
+    "named": false
+  },
+  {
+    "type": "defeat",
+    "named": false
+  },
+  {
     "type": "defglobal",
+    "named": false
+  },
+  {
+    "type": "defn",
     "named": false
   },
   {
@@ -179,6 +341,14 @@
   },
   {
     "type": "defsyntax",
+    "named": false
+  },
+  {
+    "type": "dequeue!",
+    "named": false
+  },
+  {
+    "type": "do",
     "named": false
   },
   {
@@ -206,11 +376,31 @@
     "named": false
   },
   {
+    "type": "entity_ref",
+    "named": true
+  },
+  {
     "type": "eq?",
     "named": false
   },
   {
+    "type": "event",
+    "named": false
+  },
+  {
     "type": "examine",
+    "named": false
+  },
+  {
+    "type": "exit-to",
+    "named": false
+  },
+  {
+    "type": "exit-via",
+    "named": false
+  },
+  {
+    "type": "exit?",
     "named": false
   },
   {
@@ -222,11 +412,43 @@
     "named": false
   },
   {
+    "type": "first-in",
+    "named": false
+  },
+  {
     "type": "flag",
     "named": true
   },
   {
+    "type": "flags",
+    "named": false
+  },
+  {
+    "type": "fn",
+    "named": false
+  },
+  {
     "type": "get-prop",
+    "named": false
+  },
+  {
+    "type": "give",
+    "named": false
+  },
+  {
+    "type": "global?",
+    "named": false
+  },
+  {
+    "type": "globals",
+    "named": false
+  },
+  {
+    "type": "go",
+    "named": false
+  },
+  {
+    "type": "has-flag",
     "named": false
   },
   {
@@ -234,11 +456,35 @@
     "named": false
   },
   {
+    "type": "held-by?",
+    "named": false
+  },
+  {
+    "type": "held?",
+    "named": false
+  },
+  {
+    "type": "help",
+    "named": false
+  },
+  {
+    "type": "here?",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "in",
+    "named": false
+  },
+  {
+    "type": "in-room?",
     "named": false
   },
   {
@@ -246,8 +492,20 @@
     "named": false
   },
   {
+    "type": "inc!",
+    "named": false
+  },
+  {
+    "type": "inventory",
+    "named": false
+  },
+  {
     "type": "keyword",
     "named": true
+  },
+  {
+    "type": "lambda",
+    "named": false
   },
   {
     "type": "land",
@@ -258,7 +516,15 @@
     "named": false
   },
   {
+    "type": "let",
+    "named": false
+  },
+  {
     "type": "listen",
+    "named": false
+  },
+  {
+    "type": "loc",
     "named": false
   },
   {
@@ -271,6 +537,10 @@
   },
   {
     "type": "next-sibling",
+    "named": false
+  },
+  {
+    "type": "nil",
     "named": false
   },
   {
@@ -290,11 +560,19 @@
     "named": false
   },
   {
+    "type": "not-queued?",
+    "named": false
+  },
+  {
     "type": "number",
     "named": true
   },
   {
     "type": "object",
+    "named": false
+  },
+  {
+    "type": "on-enter",
     "named": false
   },
   {
@@ -310,6 +588,34 @@
     "named": false
   },
   {
+    "type": "outcome",
+    "named": false
+  },
+  {
+    "type": "outcome?",
+    "named": false
+  },
+  {
+    "type": "player-at?",
+    "named": false
+  },
+  {
+    "type": "plug",
+    "named": false
+  },
+  {
+    "type": "point",
+    "named": false
+  },
+  {
+    "type": "process-events",
+    "named": false
+  },
+  {
+    "type": "prop",
+    "named": false
+  },
+  {
     "type": "pull",
     "named": false
   },
@@ -318,7 +624,23 @@
     "named": false
   },
   {
+    "type": "put-in",
+    "named": false
+  },
+  {
+    "type": "put-on",
+    "named": false
+  },
+  {
     "type": "put-prop",
+    "named": false
+  },
+  {
+    "type": "queue!",
+    "named": false
+  },
+  {
+    "type": "queued?",
     "named": false
   },
   {
@@ -330,6 +652,14 @@
     "named": false
   },
   {
+    "type": "reason?",
+    "named": false
+  },
+  {
+    "type": "redirect",
+    "named": false
+  },
+  {
     "type": "remove",
     "named": false
   },
@@ -338,7 +668,35 @@
     "named": false
   },
   {
+    "type": "room-has-flag?",
+    "named": false
+  },
+  {
+    "type": "room?",
+    "named": false
+  },
+  {
+    "type": "rub",
+    "named": false
+  },
+  {
+    "type": "seq",
+    "named": false
+  },
+  {
+    "type": "set!",
+    "named": false
+  },
+  {
     "type": "set-flag!",
+    "named": false
+  },
+  {
+    "type": "set-prop!",
+    "named": false
+  },
+  {
+    "type": "sit",
     "named": false
   },
   {
@@ -358,6 +716,18 @@
     "named": false
   },
   {
+    "type": "stand",
+    "named": false
+  },
+  {
+    "type": "step",
+    "named": false
+  },
+  {
+    "type": "success",
+    "named": false
+  },
+  {
     "type": "take",
     "named": false
   },
@@ -366,11 +736,27 @@
     "named": false
   },
   {
+    "type": "tell-about",
+    "named": false
+  },
+  {
+    "type": "test",
+    "named": false
+  },
+  {
+    "type": "test-sequence",
+    "named": false
+  },
+  {
     "type": "through",
     "named": false
   },
   {
     "type": "touch",
+    "named": false
+  },
+  {
+    "type": "trade",
     "named": false
   },
   {
@@ -386,15 +772,23 @@
     "named": false
   },
   {
-    "type": "unknown",
-    "named": true
-  },
-  {
     "type": "unlock",
     "named": false
   },
   {
+    "type": "unplug",
+    "named": false
+  },
+  {
     "type": "up",
+    "named": false
+  },
+  {
+    "type": "victory",
+    "named": false
+  },
+  {
+    "type": "visible?",
     "named": false
   },
   {
@@ -403,6 +797,10 @@
   },
   {
     "type": "west",
+    "named": false
+  },
+  {
+    "type": "when",
     "named": false
   },
   {

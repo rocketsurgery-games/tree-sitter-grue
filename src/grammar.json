@@ -17,6 +17,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "entity_ref"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "binding_ref"
+        },
+        {
+          "type": "SYMBOL",
           "name": "symbol"
         },
         {
@@ -57,6 +65,14 @@
         }
       ]
     },
+    "entity_ref": {
+      "type": "PATTERN",
+      "value": "@[a-zA-Z_][a-zA-Z0-9_-]*"
+    },
+    "binding_ref": {
+      "type": "PATTERN",
+      "value": "\\?[a-zA-Z_][a-zA-Z0-9_-]*"
+    },
     "keyword": {
       "type": "PATTERN",
       "value": ":[a-zA-Z_][a-zA-Z0-9_-]*"
@@ -70,7 +86,27 @@
         },
         {
           "type": "SYMBOL",
+          "name": "special_form"
+        },
+        {
+          "type": "SYMBOL",
           "name": "builtin"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "predicate"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "effect"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "test_form"
         },
         {
           "type": "SYMBOL",
@@ -86,7 +122,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "unknown"
+          "name": "boolean"
         },
         {
           "type": "SYMBOL",
@@ -111,6 +147,26 @@
         },
         {
           "type": "STRING",
+          "value": "event"
+        },
+        {
+          "type": "STRING",
+          "value": "victory"
+        },
+        {
+          "type": "STRING",
+          "value": "defeat"
+        },
+        {
+          "type": "STRING",
+          "value": "default"
+        },
+        {
+          "type": "STRING",
+          "value": "globals"
+        },
+        {
+          "type": "STRING",
           "value": "defsyntax"
         },
         {
@@ -123,20 +179,32 @@
         }
       ]
     },
-    "builtin": {
+    "special_form": {
       "type": "CHOICE",
       "members": [
         {
           "type": "STRING",
-          "value": "case"
+          "value": "fn"
         },
         {
           "type": "STRING",
-          "value": "true"
+          "value": "lambda"
         },
         {
           "type": "STRING",
-          "value": "false"
+          "value": "defn"
+        },
+        {
+          "type": "STRING",
+          "value": "cond"
+        },
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "STRING",
+          "value": "let"
         },
         {
           "type": "STRING",
@@ -152,27 +220,48 @@
         },
         {
           "type": "STRING",
-          "value": "eq?"
+          "value": "any"
         },
         {
           "type": "STRING",
-          "value": "in?"
+          "value": "all"
         },
         {
           "type": "STRING",
-          "value": "has-flag?"
+          "value": "seq"
         },
         {
           "type": "STRING",
-          "value": "set-flag!"
+          "value": "when"
+        }
+      ]
+    },
+    "builtin": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "success"
         },
         {
           "type": "STRING",
-          "value": "clear-flag!"
+          "value": "blocked"
         },
         {
           "type": "STRING",
-          "value": "move!"
+          "value": "redirect"
+        },
+        {
+          "type": "STRING",
+          "value": "outcome"
+        },
+        {
+          "type": "STRING",
+          "value": "go"
+        },
+        {
+          "type": "STRING",
+          "value": "do"
         },
         {
           "type": "STRING",
@@ -192,11 +281,227 @@
         },
         {
           "type": "STRING",
+          "value": "first-in"
+        }
+      ]
+    },
+    "operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "STRING",
+          "value": "%"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "STRING",
+          "value": ">="
+        },
+        {
+          "type": "STRING",
+          "value": "<="
+        }
+      ]
+    },
+    "predicate": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "has-flag"
+        },
+        {
+          "type": "STRING",
+          "value": "has-flag?"
+        },
+        {
+          "type": "STRING",
+          "value": "loc"
+        },
+        {
+          "type": "STRING",
+          "value": "prop"
+        },
+        {
+          "type": "STRING",
+          "value": "flags"
+        },
+        {
+          "type": "STRING",
+          "value": "visible?"
+        },
+        {
+          "type": "STRING",
+          "value": "held?"
+        },
+        {
+          "type": "STRING",
+          "value": "here?"
+        },
+        {
+          "type": "STRING",
+          "value": "in?"
+        },
+        {
+          "type": "STRING",
+          "value": "held-by?"
+        },
+        {
+          "type": "STRING",
+          "value": "at?"
+        },
+        {
+          "type": "STRING",
+          "value": "room?"
+        },
+        {
+          "type": "STRING",
+          "value": "in-room?"
+        },
+        {
+          "type": "STRING",
+          "value": "room-has-flag?"
+        },
+        {
+          "type": "STRING",
+          "value": "inventory"
+        },
+        {
+          "type": "STRING",
+          "value": "contents"
+        },
+        {
+          "type": "STRING",
+          "value": "exit?"
+        },
+        {
+          "type": "STRING",
+          "value": "exit-to"
+        },
+        {
+          "type": "STRING",
+          "value": "exit-via"
+        },
+        {
+          "type": "STRING",
+          "value": "queued?"
+        },
+        {
+          "type": "STRING",
+          "value": "eq?"
+        },
+        {
+          "type": "STRING",
+          "value": "outcome?"
+        },
+        {
+          "type": "STRING",
+          "value": "reason?"
+        },
+        {
+          "type": "STRING",
+          "value": "context?"
+        },
+        {
+          "type": "STRING",
+          "value": "player-at?"
+        },
+        {
+          "type": "STRING",
+          "value": "global?"
+        },
+        {
+          "type": "STRING",
+          "value": "not-queued?"
+        }
+      ]
+    },
+    "effect": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "move!"
+        },
+        {
+          "type": "STRING",
+          "value": "set-flag!"
+        },
+        {
+          "type": "STRING",
+          "value": "clear-flag!"
+        },
+        {
+          "type": "STRING",
+          "value": "set-prop!"
+        },
+        {
+          "type": "STRING",
+          "value": "set!"
+        },
+        {
+          "type": "STRING",
+          "value": "inc!"
+        },
+        {
+          "type": "STRING",
+          "value": "queue!"
+        },
+        {
+          "type": "STRING",
+          "value": "dequeue!"
+        },
+        {
+          "type": "STRING",
           "value": "get-prop"
         },
         {
           "type": "STRING",
           "value": "put-prop"
+        }
+      ]
+    },
+    "test_form": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "test"
+        },
+        {
+          "type": "STRING",
+          "value": "test-sequence"
+        },
+        {
+          "type": "STRING",
+          "value": "step"
         }
       ]
     },
@@ -381,6 +686,30 @@
           {
             "type": "STRING",
             "value": "AN"
+          },
+          {
+            "type": "STRING",
+            "value": "POWER"
+          },
+          {
+            "type": "STRING",
+            "value": "FIXED"
+          },
+          {
+            "type": "STRING",
+            "value": "LIT"
+          },
+          {
+            "type": "STRING",
+            "value": "DARK"
+          },
+          {
+            "type": "STRING",
+            "value": "OUTSIDE"
+          },
+          {
+            "type": "STRING",
+            "value": "INSIDE"
           }
         ]
       }
@@ -398,6 +727,10 @@
         },
         {
           "type": "STRING",
+          "value": "through"
+        },
+        {
+          "type": "STRING",
           "value": "take"
         },
         {
@@ -407,10 +740,6 @@
         {
           "type": "STRING",
           "value": "examine"
-        },
-        {
-          "type": "STRING",
-          "value": "through"
         },
         {
           "type": "STRING",
@@ -442,7 +771,39 @@
         },
         {
           "type": "STRING",
+          "value": "plug"
+        },
+        {
+          "type": "STRING",
+          "value": "unplug"
+        },
+        {
+          "type": "STRING",
           "value": "attack"
+        },
+        {
+          "type": "STRING",
+          "value": "push"
+        },
+        {
+          "type": "STRING",
+          "value": "pull"
+        },
+        {
+          "type": "STRING",
+          "value": "touch"
+        },
+        {
+          "type": "STRING",
+          "value": "rub"
+        },
+        {
+          "type": "STRING",
+          "value": "click"
+        },
+        {
+          "type": "STRING",
+          "value": "point"
         },
         {
           "type": "STRING",
@@ -462,15 +823,15 @@
         },
         {
           "type": "STRING",
-          "value": "push"
-        },
-        {
-          "type": "STRING",
-          "value": "pull"
-        },
-        {
-          "type": "STRING",
           "value": "climb"
+        },
+        {
+          "type": "STRING",
+          "value": "sit"
+        },
+        {
+          "type": "STRING",
+          "value": "stand"
         },
         {
           "type": "STRING",
@@ -482,13 +843,66 @@
         },
         {
           "type": "STRING",
-          "value": "touch"
+          "value": "ask-about"
+        },
+        {
+          "type": "STRING",
+          "value": "tell-about"
+        },
+        {
+          "type": "STRING",
+          "value": "give"
+        },
+        {
+          "type": "STRING",
+          "value": "trade"
+        },
+        {
+          "type": "STRING",
+          "value": "ask-for"
+        },
+        {
+          "type": "STRING",
+          "value": "help"
+        },
+        {
+          "type": "STRING",
+          "value": "put-on"
+        },
+        {
+          "type": "STRING",
+          "value": "put-in"
+        },
+        {
+          "type": "STRING",
+          "value": "on-enter"
+        },
+        {
+          "type": "STRING",
+          "value": "before-action"
+        },
+        {
+          "type": "STRING",
+          "value": "process-events"
         }
       ]
     },
-    "unknown": {
-      "type": "STRING",
-      "value": "?"
+    "boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": "nil"
+        }
+      ]
     },
     "identifier": {
       "type": "PATTERN",

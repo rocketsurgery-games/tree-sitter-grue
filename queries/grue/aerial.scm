@@ -5,6 +5,7 @@
 (list
   (symbol (defform) @_type)
   (#eq? @_type "room")
+  .
   (entity_ref) @name
   (#set! "kind" "Class")) @symbol
 
@@ -12,6 +13,7 @@
 (list
   (symbol (defform) @_type)
   (#eq? @_type "object")
+  .
   (entity_ref) @name
   (#set! "kind" "Struct")) @symbol
 
@@ -98,3 +100,24 @@
   (#eq? @_type "defroutine")
   (symbol (identifier) @name)
   (#set! "kind" "Function")) @symbol
+
+; Behavior handlers - keyword followed by cond list
+; Matches pattern: :verb (cond ...) inside :behaviors blocks
+; Each cond list is captured as a symbol with the preceding keyword as name
+(list
+  (keyword) @name
+  .
+  (list
+    (symbol (special_form) @_cond)
+    (#eq? @_cond "cond")) @symbol
+  (#set! "kind" "Method"))
+
+; Behavior handlers - keyword followed by fn/lambda (for hooks like :on-enter)
+; Matches pattern: :verb (fn (...) ...) inside :behaviors blocks
+(list
+  (keyword) @name
+  .
+  (list
+    (symbol (special_form) @_fn)
+    (#any-of? @_fn "fn" "lambda")) @symbol
+  (#set! "kind" "Method"))

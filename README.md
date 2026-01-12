@@ -1,6 +1,11 @@
 # tree-sitter-grue
 
-Tree-sitter grammar for GRUE (Game Runtime for Universal Experiences), a declarative DSL for interactive fiction world definitions.
+Tree-sitter grammar for GRUE (Game Rules and Universe Expressions), a declarative language for defining interactive fiction game worlds.
+
+GRUE is designed to be:
+- **Statically analyzable** - State space can be explored for winnability, soft-locks, invariants
+- **LLM-friendly** - Provides constraints and affordances for LLM-driven gameplay
+- **Expressive** - Can represent the complexity of Infocom-style games
 
 ## Installation
 
@@ -62,12 +67,18 @@ npx tree-sitter generate
 
 The grammar provides semantic highlighting for:
 
+- **Entity references**: `@player`, `@door`, `@terminal-room` (objects, rooms)
+- **Binding references**: `?self`, `?actor`, `?with` (action context bindings)
 - **Keywords**: `:name`, `:description`, `:flags`, `:exits`, `:behaviors`, etc.
-- **Definition forms**: `world`, `room`, `object`, `defsyntax`, `defglobal`, `defroutine`
-- **Built-ins**: `case`, `true`, `false`, `and`, `or`, `not`, `eq?`, `in?`, `has-flag?`, etc.
-- **Directions**: `north`, `south`, `east`, `west`, `up`, `down`, etc.
-- **Flags**: `ONBIT`, `INVISIBLE`, `TAKEBIT`, `DOORBIT`, etc.
-- **Behaviors**: `enter`, `leave`, `take`, `drop`, `examine`, `through`, etc.
+- **Definition forms**: `world`, `room`, `object`, `event`, `globals`, `victory`, `defeat`, `default`, `defn`
+- **Special forms**: `fn`, `lambda`, `cond`, `if`, `let`, `and`, `or`, `not`, `any`, `all`, `seq`, `when`
+- **Outcome forms**: `success`, `blocked`, `redirect`, `default`
+- **Predicates**: `has-flag`, `held?`, `here?`, `in?`, `visible?`, `queued?`, etc.
+- **Effects**: `move!`, `set-flag!`, `clear-flag!`, `set!`, `inc!`, `queue!`, `dequeue!`
+- **Directions**: `north`, `south`, `east`, `west`, `up`, `down`, `in`, `out`, etc.
+- **Flags**: `LOCKED`, `TAKEBIT`, `PERSON`, `LIT`, `OUTSIDE`, etc. (uppercase constants)
+- **Behaviors**: `open`, `unlock`, `take`, `drop`, `examine`, `through`, `on-enter`, `before-action`, etc.
+- **Booleans**: `true`, `false`, `nil`
 - **Comments**: Lines starting with `;`
 - **Strings**: Double-quoted strings with escape sequences
 - **Numbers**: Integer literals
@@ -75,36 +86,54 @@ The grammar provides semantic highlighting for:
 ## Example GRUE Code
 
 ```grue
-; A simple room definition
-(room LIVING-ROOM
-  :description "Living Room"
-  :ldesc "You are in a cozy living room. A fireplace crackles warmly."
-  :flags (ONBIT LIGHTBIT)
-  :exits
-    (
-      (north :to KITCHEN)
-      (east :to HALLWAY)
-      (up :to UPSTAIRS)
-    )
-)
+; Room definition with exits
+(room @lobby
+  :description "The building's main lobby"
+  :flags (INSIDE LIT)
+  :exits ((out :to @mass-ave :via @outside-door)
+          (north :to @hallway)))
 
-; An object with behaviors
-(object LAMP
-  :description "brass lamp"
-  :location LIVING-ROOM
-  :flags (TAKEBIT DEVICEBIT)
-  :behaviors
-    (
-      (turn-on
-        (case (not (has-flag? self ONBIT))
-          :outcome (set-flag! self ONBIT)
-          :message "The lamp is now on."))
-      (turn-off
-        (case (has-flag? self ONBIT)
-          :outcome (clear-flag! self ONBIT)
-          :message "The lamp is now off."))
-    )
-)
+; Object with behaviors
+(object @outside-door
+  :description "A heavy exterior door with an electronic lock"
+  :location @mass-ave
+  :flags (DOOR LOCKED OPENABLE FIXED)
+  :properties (:lock-type electronic :key-required @master-key)
+  :behaviors (
+    :open (cond
+      ((room-has-flag? OUTSIDE)
+        (blocked :reason locked-from-outside))
+      (true
+        (success :context ((note auto-closing)))))
+
+    :unlock (cond
+      ((and (has-flag ?self LOCKED) (= ?with @master-key))
+        (success :effects ((clear-flag! ?self LOCKED))))
+      ((has-flag ?self LOCKED)
+        (blocked :reason need-key))
+      (true
+        (blocked :reason not-locked)))))
+
+; Global state
+(globals
+  :score 0
+  :moves 0
+  :game-phase beginning)
+
+; Turn-based event
+(event hacker-helps
+  :location @terminal-room
+  :on-turn (cond
+    ((= hacker-help 0)
+      (success :effects ((inc! hacker-help))
+               :context ((stage 1))))
+    (true
+      (success :effects ((dequeue! hacker-helps))))))
+
+; Victory condition
+(victory
+  :when (>= (prop @player score) 100)
+  :context ((ending good)))
 ```
 
 ## License

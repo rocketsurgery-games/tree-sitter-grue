@@ -66,6 +66,13 @@
   (symbol (identifier) @name)
   (#set! "kind" "Function")) @symbol
 
+; (def NAME ...) - Value bindings
+(list
+  (symbol (special_form) @_type)
+  (#eq? @_type "def")
+  (symbol (identifier) @name)
+  (#set! "kind" "Variable")) @symbol
+
 ; (test NAME ...) - Test definitions
 (list
   (symbol (test_form) @_type)
@@ -79,6 +86,13 @@
   (#eq? @_type "test-sequence")
   (string) @name
   (#set! "kind" "Function")) @symbol
+
+; (test-group NAME ...) - Test group definitions
+(list
+  (symbol (test_form) @_type)
+  (#eq? @_type "test-group")
+  (string) @name
+  (#set! "kind" "Class")) @symbol
 
 ; (defsyntax NAME ...) - Syntax definitions
 (list

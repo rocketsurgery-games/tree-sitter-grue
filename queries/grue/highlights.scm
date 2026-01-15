@@ -55,6 +55,9 @@
 ; General identifiers
 (identifier) @variable
 
+; Quote prefix
+(quoted "'" @punctuation.special)
+
 ; Punctuation
 "(" @punctuation.bracket
 ")" @punctuation.bracket

@@ -17,6 +17,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "quoted"
+        },
+        {
+          "type": "SYMBOL",
           "name": "entity_ref"
         },
         {
@@ -62,6 +66,19 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "quoted": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_form"
         }
       ]
     },
@@ -196,6 +213,10 @@
         },
         {
           "type": "STRING",
+          "value": "def"
+        },
+        {
+          "type": "STRING",
           "value": "cond"
         },
         {
@@ -205,6 +226,22 @@
         {
           "type": "STRING",
           "value": "let"
+        },
+        {
+          "type": "STRING",
+          "value": "match"
+        },
+        {
+          "type": "STRING",
+          "value": "condp"
+        },
+        {
+          "type": "STRING",
+          "value": "cond->"
+        },
+        {
+          "type": "STRING",
+          "value": "cond->>"
         },
         {
           "type": "STRING",
@@ -233,6 +270,34 @@
         {
           "type": "STRING",
           "value": "when"
+        },
+        {
+          "type": "STRING",
+          "value": "quote"
+        },
+        {
+          "type": "STRING",
+          "value": "list"
+        },
+        {
+          "type": "STRING",
+          "value": "range"
+        },
+        {
+          "type": "STRING",
+          "value": "some"
+        },
+        {
+          "type": "STRING",
+          "value": "every?"
+        },
+        {
+          "type": "STRING",
+          "value": "for"
+        },
+        {
+          "type": "STRING",
+          "value": "doseq"
         }
       ]
     },
@@ -310,6 +375,10 @@
         },
         {
           "type": "STRING",
+          "value": "mod"
+        },
+        {
+          "type": "STRING",
           "value": "="
         },
         {
@@ -351,6 +420,10 @@
         },
         {
           "type": "STRING",
+          "value": "desc"
+        },
+        {
+          "type": "STRING",
           "value": "flags"
         },
         {
@@ -368,6 +441,14 @@
         {
           "type": "STRING",
           "value": "in?"
+        },
+        {
+          "type": "STRING",
+          "value": "contained-in?"
+        },
+        {
+          "type": "STRING",
+          "value": "inside?"
         },
         {
           "type": "STRING",
@@ -419,6 +500,70 @@
         },
         {
           "type": "STRING",
+          "value": "nil?"
+        },
+        {
+          "type": "STRING",
+          "value": "empty?"
+        },
+        {
+          "type": "STRING",
+          "value": "str"
+        },
+        {
+          "type": "STRING",
+          "value": "join"
+        },
+        {
+          "type": "STRING",
+          "value": "nth"
+        },
+        {
+          "type": "STRING",
+          "value": "list-set"
+        },
+        {
+          "type": "STRING",
+          "value": "first"
+        },
+        {
+          "type": "STRING",
+          "value": "rest"
+        },
+        {
+          "type": "STRING",
+          "value": "count"
+        },
+        {
+          "type": "STRING",
+          "value": "cons"
+        },
+        {
+          "type": "STRING",
+          "value": "concat"
+        },
+        {
+          "type": "STRING",
+          "value": "map"
+        },
+        {
+          "type": "STRING",
+          "value": "filter"
+        },
+        {
+          "type": "STRING",
+          "value": "remove"
+        },
+        {
+          "type": "STRING",
+          "value": "keep"
+        },
+        {
+          "type": "STRING",
+          "value": "reduce"
+        },
+        {
+          "type": "STRING",
           "value": "outcome?"
         },
         {
@@ -432,6 +577,14 @@
         {
           "type": "STRING",
           "value": "player-at?"
+        },
+        {
+          "type": "STRING",
+          "value": "loc?"
+        },
+        {
+          "type": "STRING",
+          "value": "prop?"
         },
         {
           "type": "STRING",
@@ -449,6 +602,10 @@
         {
           "type": "STRING",
           "value": "move!"
+        },
+        {
+          "type": "STRING",
+          "value": "take!"
         },
         {
           "type": "STRING",
@@ -498,6 +655,10 @@
         {
           "type": "STRING",
           "value": "test-sequence"
+        },
+        {
+          "type": "STRING",
+          "value": "test-group"
         },
         {
           "type": "STRING",
@@ -689,6 +850,38 @@
           },
           {
             "type": "STRING",
+            "value": "DOOR"
+          },
+          {
+            "type": "STRING",
+            "value": "CONTAINER"
+          },
+          {
+            "type": "STRING",
+            "value": "LIGHT"
+          },
+          {
+            "type": "STRING",
+            "value": "ON"
+          },
+          {
+            "type": "STRING",
+            "value": "OPEN"
+          },
+          {
+            "type": "STRING",
+            "value": "SMALL"
+          },
+          {
+            "type": "STRING",
+            "value": "MOVEDBIT"
+          },
+          {
+            "type": "STRING",
+            "value": "FIRSTTIME"
+          },
+          {
+            "type": "STRING",
             "value": "POWER"
           },
           {
@@ -816,10 +1009,6 @@
         {
           "type": "STRING",
           "value": "wear"
-        },
-        {
-          "type": "STRING",
-          "value": "remove"
         },
         {
           "type": "STRING",

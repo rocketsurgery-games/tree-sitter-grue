@@ -12,6 +12,7 @@ module.exports = grammar({
     _form: ($) =>
       choice(
         $.list,
+        $.quoted,
         $.entity_ref,
         $.binding_ref,
         $.symbol,
@@ -25,6 +26,9 @@ module.exports = grammar({
 
     // Lists: ( ... )
     list: ($) => seq("(", repeat($._form), ")"),
+
+    // Quoted forms: 'expr (shorthand for (quote expr))
+    quoted: ($) => seq("'", $._form),
 
     // Entity references: @name (objects, rooms, player)
     entity_ref: ($) => /@[a-zA-Z_][a-zA-Z0-9_-]*/,
@@ -74,16 +78,28 @@ module.exports = grammar({
         "fn",
         "lambda",
         "defn",
+        "def",
         "cond",
         "if",
         "let",
+        "match",
+        "condp",
+        "cond->",
+        "cond->>",
         "and",
         "or",
         "not",
         "any",
         "all",
         "seq",
-        "when"
+        "when",
+        "quote",
+        "list",
+        "range",
+        "some",
+        "every?",
+        "for",
+        "doseq"
       ),
 
     // Outcome forms (behavior results)
@@ -103,20 +119,24 @@ module.exports = grammar({
       ),
 
     // Operators
-    operator: ($) => choice("+", "-", "*", "/", "%", "=", ">", "<", ">=", "<="),
+    operator: ($) => choice("+", "-", "*", "/", "%", "mod", "=", ">", "<", ">=", "<="),
 
     // Predicate functions (queries that return boolean or value)
     predicate: ($) =>
       choice(
+        // Object queries
         "has-flag",
         "has-flag?",
         "loc",
         "prop",
+        "desc",
         "flags",
         "visible?",
         "held?",
         "here?",
         "in?",
+        "contained-in?",
+        "inside?",
         "held-by?",
         "at?",
         "room?",
@@ -129,11 +149,32 @@ module.exports = grammar({
         "exit-via",
         "queued?",
         "eq?",
+        // Comparison and logic
+        "nil?",
+        "empty?",
+        // String and list functions
+        "str",
+        "join",
+        "nth",
+        "list-set",
+        "first",
+        "rest",
+        "count",
+        "cons",
+        "concat",
+        // Higher-order functions
+        "map",
+        "filter",
+        "remove",
+        "keep",
+        "reduce",
         // Test predicates
         "outcome?",
         "reason?",
         "context?",
         "player-at?",
+        "loc?",
+        "prop?",
         "global?",
         "not-queued?"
       ),
@@ -142,6 +183,7 @@ module.exports = grammar({
     effect: ($) =>
       choice(
         "move!",
+        "take!",
         "set-flag!",
         "clear-flag!",
         "set-prop!",
@@ -154,7 +196,7 @@ module.exports = grammar({
       ),
 
     // Test DSL forms
-    test_form: ($) => choice("test", "test-sequence", "step"),
+    test_form: ($) => choice("test", "test-sequence", "test-group", "step"),
 
     // Directions
     direction: ($) =>
@@ -209,7 +251,15 @@ module.exports = grammar({
           "RMUNGBIT",
           "NOABIT",
           "AN",
-          // Additional flags
+          // Additional flags from current spec
+          "DOOR",
+          "CONTAINER",
+          "LIGHT",
+          "ON",
+          "OPEN",
+          "SMALL",
+          "MOVEDBIT",
+          "FIRSTTIME",
           "POWER",
           "FIXED",
           "LIT",
@@ -252,7 +302,8 @@ module.exports = grammar({
         "drink",
         // Wearables
         "wear",
-        "remove",
+        // Note: "remove" (for clothing) is accessed via :remove keyword
+        // The bare "remove" symbol is the higher-order list function
         // Movement verbs
         "climb",
         "sit",

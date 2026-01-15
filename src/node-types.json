@@ -58,6 +58,10 @@
           "named": true
         },
         {
+          "type": "quoted",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -77,6 +81,49 @@
     "type": "predicate",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "quoted",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binding_ref",
+          "named": true
+        },
+        {
+          "type": "entity_ref",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "source_file",
@@ -104,6 +151,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "quoted",
           "named": true
         },
         {
@@ -197,6 +248,10 @@
   },
   {
     "type": "%",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -308,7 +363,31 @@
     "named": true
   },
   {
+    "type": "concat",
+    "named": false
+  },
+  {
     "type": "cond",
+    "named": false
+  },
+  {
+    "type": "cond->",
+    "named": false
+  },
+  {
+    "type": "cond->>",
+    "named": false
+  },
+  {
+    "type": "condp",
+    "named": false
+  },
+  {
+    "type": "cons",
+    "named": false
+  },
+  {
+    "type": "contained-in?",
     "named": false
   },
   {
@@ -317,6 +396,14 @@
   },
   {
     "type": "context?",
+    "named": false
+  },
+  {
+    "type": "count",
+    "named": false
+  },
+  {
+    "type": "def",
     "named": false
   },
   {
@@ -348,7 +435,15 @@
     "named": false
   },
   {
+    "type": "desc",
+    "named": false
+  },
+  {
     "type": "do",
+    "named": false
+  },
+  {
+    "type": "doseq",
     "named": false
   },
   {
@@ -372,6 +467,10 @@
     "named": false
   },
   {
+    "type": "empty?",
+    "named": false
+  },
+  {
     "type": "enter",
     "named": false
   },
@@ -385,6 +484,10 @@
   },
   {
     "type": "event",
+    "named": false
+  },
+  {
+    "type": "every?",
     "named": false
   },
   {
@@ -408,6 +511,14 @@
     "named": false
   },
   {
+    "type": "filter",
+    "named": false
+  },
+  {
+    "type": "first",
+    "named": false
+  },
+  {
     "type": "first-child",
     "named": false
   },
@@ -425,6 +536,10 @@
   },
   {
     "type": "fn",
+    "named": false
+  },
+  {
+    "type": "for",
     "named": false
   },
   {
@@ -496,7 +611,19 @@
     "named": false
   },
   {
+    "type": "inside?",
+    "named": false
+  },
+  {
     "type": "inventory",
+    "named": false
+  },
+  {
+    "type": "join",
+    "named": false
+  },
+  {
+    "type": "keep",
     "named": false
   },
   {
@@ -520,6 +647,14 @@
     "named": false
   },
   {
+    "type": "list",
+    "named": false
+  },
+  {
+    "type": "list-set",
+    "named": false
+  },
+  {
     "type": "listen",
     "named": false
   },
@@ -528,7 +663,23 @@
     "named": false
   },
   {
+    "type": "loc?",
+    "named": false
+  },
+  {
     "type": "lock",
+    "named": false
+  },
+  {
+    "type": "map",
+    "named": false
+  },
+  {
+    "type": "match",
+    "named": false
+  },
+  {
+    "type": "mod",
     "named": false
   },
   {
@@ -541,6 +692,10 @@
   },
   {
     "type": "nil",
+    "named": false
+  },
+  {
+    "type": "nil?",
     "named": false
   },
   {
@@ -561,6 +716,10 @@
   },
   {
     "type": "not-queued?",
+    "named": false
+  },
+  {
+    "type": "nth",
     "named": false
   },
   {
@@ -616,6 +775,10 @@
     "named": false
   },
   {
+    "type": "prop?",
+    "named": false
+  },
+  {
     "type": "pull",
     "named": false
   },
@@ -644,7 +807,15 @@
     "named": false
   },
   {
+    "type": "quote",
+    "named": false
+  },
+  {
     "type": "random",
+    "named": false
+  },
+  {
+    "type": "range",
     "named": false
   },
   {
@@ -660,7 +831,15 @@
     "named": false
   },
   {
+    "type": "reduce",
+    "named": false
+  },
+  {
     "type": "remove",
+    "named": false
+  },
+  {
+    "type": "rest",
     "named": false
   },
   {
@@ -704,6 +883,10 @@
     "named": false
   },
   {
+    "type": "some",
+    "named": false
+  },
+  {
     "type": "south",
     "named": false
   },
@@ -724,11 +907,19 @@
     "named": false
   },
   {
+    "type": "str",
+    "named": false
+  },
+  {
     "type": "success",
     "named": false
   },
   {
     "type": "take",
+    "named": false
+  },
+  {
+    "type": "take!",
     "named": false
   },
   {
@@ -741,6 +932,10 @@
   },
   {
     "type": "test",
+    "named": false
+  },
+  {
+    "type": "test-group",
     "named": false
   },
   {

@@ -109,22 +109,30 @@
   (#set! "kind" "Function")) @symbol
 
 ; Behavior handlers - keyword followed by cond list
-; Matches pattern: :verb (cond ...) inside :behaviors blocks
-; Each cond list is captured as a symbol with the preceding keyword as name
+; Matches pattern: :behaviors (:verb (cond ...)) inside object definitions
+; Only matches when inside a :behaviors list (keyword followed by list containing keyword+cond pairs)
 (list
-  (keyword) @name
+  (keyword) @_behaviors
+  (#eq? @_behaviors ":behaviors")
   .
   (list
-    (symbol (special_form) @_cond)
-    (#eq? @_cond "cond")) @symbol
-  (#set! "kind" "Method"))
+    (keyword) @name
+    .
+    (list
+      (symbol (special_form) @_cond)
+      (#eq? @_cond "cond")) @symbol
+    (#set! "kind" "Method")))
 
 ; Behavior handlers - keyword followed by fn/lambda (for hooks like :on-enter)
-; Matches pattern: :verb (fn (...) ...) inside :behaviors blocks
+; Matches pattern: :behaviors (:verb (fn (...) ...)) inside object definitions
 (list
-  (keyword) @name
+  (keyword) @_behaviors
+  (#eq? @_behaviors ":behaviors")
   .
   (list
-    (symbol (special_form) @_fn)
-    (#any-of? @_fn "fn" "lambda")) @symbol
-  (#set! "kind" "Method"))
+    (keyword) @name
+    .
+    (list
+      (symbol (special_form) @_fn)
+      (#any-of? @_fn "fn" "lambda")) @symbol
+    (#set! "kind" "Method")))

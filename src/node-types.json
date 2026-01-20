@@ -275,6 +275,14 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": "->>",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -320,6 +328,10 @@
   },
   {
     "type": "ask-for",
+    "named": false
+  },
+  {
+    "type": "assert",
     "named": false
   },
   {
@@ -403,6 +415,14 @@
     "named": false
   },
   {
+    "type": "death?",
+    "named": false
+  },
+  {
+    "type": "dec",
+    "named": false
+  },
+  {
     "type": "def",
     "named": false
   },
@@ -428,6 +448,10 @@
   },
   {
     "type": "defsyntax",
+    "named": false
+  },
+  {
+    "type": "dequeue",
     "named": false
   },
   {
@@ -543,6 +567,14 @@
     "named": false
   },
   {
+    "type": "get-in",
+    "named": false
+  },
+  {
+    "type": "get-player-room",
+    "named": false
+  },
+  {
     "type": "get-prop",
     "named": false
   },
@@ -552,10 +584,6 @@
   },
   {
     "type": "global?",
-    "named": false
-  },
-  {
-    "type": "globals",
     "named": false
   },
   {
@@ -604,6 +632,10 @@
   },
   {
     "type": "in?",
+    "named": false
+  },
+  {
+    "type": "inc",
     "named": false
   },
   {
@@ -683,6 +715,10 @@
     "named": false
   },
   {
+    "type": "move",
+    "named": false
+  },
+  {
     "type": "move!",
     "named": false
   },
@@ -755,6 +791,10 @@
     "named": false
   },
   {
+    "type": "player",
+    "named": false
+  },
+  {
     "type": "player-at?",
     "named": false
   },
@@ -796,6 +836,10 @@
   },
   {
     "type": "put-prop",
+    "named": false
+  },
+  {
+    "type": "queue",
     "named": false
   },
   {
@@ -843,6 +887,10 @@
     "named": false
   },
   {
+    "type": "result",
+    "named": false
+  },
+  {
     "type": "room",
     "named": false
   },
@@ -859,7 +907,15 @@
     "named": false
   },
   {
+    "type": "run",
+    "named": false
+  },
+  {
     "type": "seq",
+    "named": false
+  },
+  {
+    "type": "set",
     "named": false
   },
   {
@@ -868,6 +924,10 @@
   },
   {
     "type": "set-flag!",
+    "named": false
+  },
+  {
+    "type": "set-in",
     "named": false
   },
   {
@@ -903,10 +963,6 @@
     "named": false
   },
   {
-    "type": "step",
-    "named": false
-  },
-  {
     "type": "str",
     "named": false
   },
@@ -936,10 +992,6 @@
   },
   {
     "type": "test-group",
-    "named": false
-  },
-  {
-    "type": "test-sequence",
     "named": false
   },
   {
@@ -975,6 +1027,10 @@
     "named": false
   },
   {
+    "type": "until",
+    "named": false
+  },
+  {
     "type": "up",
     "named": false
   },
@@ -983,7 +1039,15 @@
     "named": false
   },
   {
+    "type": "victory?",
+    "named": false
+  },
+  {
     "type": "visible?",
+    "named": false
+  },
+  {
+    "type": "wait",
     "named": false
   },
   {

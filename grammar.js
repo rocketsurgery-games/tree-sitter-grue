@@ -66,7 +66,7 @@ module.exports = grammar({
         "victory",
         "defeat",
         "default",
-        "globals",
+        // Note: "globals" removed - use object properties instead
         "defsyntax",
         "defglobal",
         "defroutine"
@@ -84,6 +84,9 @@ module.exports = grammar({
         "let",
         "match",
         "condp",
+        // Threading macros
+        "->",
+        "->>",
         "cond->",
         "cond->>",
         "and",
@@ -102,16 +105,20 @@ module.exports = grammar({
         "doseq"
       ),
 
-    // Outcome forms (behavior results)
+    // Outcome forms (behavior results) and core functions
     builtin: ($) =>
       choice(
         "success",
         "blocked",
         "redirect",
+        // Note: "default" is in defform for (default VERB ...) top-level form
+        // The outcome (default :action ...) will be parsed as identifier
         "outcome",
+        "result",
         "go",
         "do",
         "tell",
+        "player",
         "random",
         "first-child",
         "next-sibling",
@@ -149,6 +156,9 @@ module.exports = grammar({
         "exit-via",
         "queued?",
         "eq?",
+        // Nested property access
+        "get-in",
+        "get-player-room",
         // Comparison and logic
         "nil?",
         "empty?",
@@ -176,12 +186,16 @@ module.exports = grammar({
         "loc?",
         "prop?",
         "global?",
-        "not-queued?"
+        "not-queued?",
+        "death?",
+        "victory?"
       ),
 
     // Effect functions (state mutations)
+    // Both ! forms (imperative) and non-! forms (for quoted effect lists)
     effect: ($) =>
       choice(
+        // Imperative forms (direct use)
         "move!",
         "take!",
         "set-flag!",
@@ -191,12 +205,29 @@ module.exports = grammar({
         "inc!",
         "queue!",
         "dequeue!",
+        // Declarative forms (for quoted effect lists)
+        "move",
+        "set",
+        "set-in",
+        "inc",
+        "dec",
+        "queue",
+        "dequeue",
+        // Legacy
         "get-prop",
         "put-prop"
       ),
 
     // Test DSL forms
-    test_form: ($) => choice("test", "test-sequence", "test-group", "step"),
+    test_form: ($) => choice(
+      "test",
+      "test-group",
+      // Test body forms
+      "assert",
+      "until",
+      "wait",
+      "run"
+    ),
 
     // Directions
     direction: ($) =>

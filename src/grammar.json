@@ -180,10 +180,6 @@
         },
         {
           "type": "STRING",
-          "value": "globals"
-        },
-        {
-          "type": "STRING",
           "value": "defsyntax"
         },
         {
@@ -234,6 +230,14 @@
         {
           "type": "STRING",
           "value": "condp"
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "STRING",
+          "value": "->>"
         },
         {
           "type": "STRING",
@@ -322,6 +326,10 @@
         },
         {
           "type": "STRING",
+          "value": "result"
+        },
+        {
+          "type": "STRING",
           "value": "go"
         },
         {
@@ -331,6 +339,10 @@
         {
           "type": "STRING",
           "value": "tell"
+        },
+        {
+          "type": "STRING",
+          "value": "player"
         },
         {
           "type": "STRING",
@@ -500,6 +512,14 @@
         },
         {
           "type": "STRING",
+          "value": "get-in"
+        },
+        {
+          "type": "STRING",
+          "value": "get-player-room"
+        },
+        {
+          "type": "STRING",
           "value": "nil?"
         },
         {
@@ -593,6 +613,14 @@
         {
           "type": "STRING",
           "value": "not-queued?"
+        },
+        {
+          "type": "STRING",
+          "value": "death?"
+        },
+        {
+          "type": "STRING",
+          "value": "victory?"
         }
       ]
     },
@@ -637,6 +665,34 @@
         },
         {
           "type": "STRING",
+          "value": "move"
+        },
+        {
+          "type": "STRING",
+          "value": "set"
+        },
+        {
+          "type": "STRING",
+          "value": "set-in"
+        },
+        {
+          "type": "STRING",
+          "value": "inc"
+        },
+        {
+          "type": "STRING",
+          "value": "dec"
+        },
+        {
+          "type": "STRING",
+          "value": "queue"
+        },
+        {
+          "type": "STRING",
+          "value": "dequeue"
+        },
+        {
+          "type": "STRING",
           "value": "get-prop"
         },
         {
@@ -654,15 +710,23 @@
         },
         {
           "type": "STRING",
-          "value": "test-sequence"
-        },
-        {
-          "type": "STRING",
           "value": "test-group"
         },
         {
           "type": "STRING",
-          "value": "step"
+          "value": "assert"
+        },
+        {
+          "type": "STRING",
+          "value": "until"
+        },
+        {
+          "type": "STRING",
+          "value": "wait"
+        },
+        {
+          "type": "STRING",
+          "value": "run"
         }
       ]
     },

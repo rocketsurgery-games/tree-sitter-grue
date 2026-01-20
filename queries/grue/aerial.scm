@@ -80,13 +80,6 @@
   (string) @name
   (#set! "kind" "Function")) @symbol
 
-; (test-sequence NAME ...) - Test sequence definitions
-(list
-  (symbol (test_form) @_type)
-  (#eq? @_type "test-sequence")
-  (string) @name
-  (#set! "kind" "Function")) @symbol
-
 ; (test-group NAME ...) - Test group definitions
 (list
   (symbol (test_form) @_type)

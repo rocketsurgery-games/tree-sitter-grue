@@ -7,7 +7,7 @@
   (#eq? @_type "room")
   .
   (entity_ref) @name
-  (#set! "kind" "Class")) @symbol
+  (#set! "kind" "Namespace")) @symbol
 
 ; (object NAME ...) - Object definitions
 (list
@@ -15,19 +15,23 @@
   (#eq? @_type "object")
   .
   (entity_ref) @name
-  (#set! "kind" "Struct")) @symbol
+  (#set! "kind" "Class")) @symbol
 
-; (world ...) - World definition
+; (world :name "..." ...) - World definition
+; Capture the game name from :name keyword
 (list
   (symbol (defform) @_type)
   (#eq? @_type "world")
-  (#set! "kind" "Module")
-  (#set! "name" "world")) @symbol
+  (keyword) @_kw
+  (#eq? @_kw ":name")
+  (string) @name
+  (#set! "kind" "Module")) @symbol
 
 ; (event NAME ...) - Event definitions
 (list
   (symbol (defform) @_type)
   (#eq? @_type "event")
+  .
   (symbol (identifier) @name)
   (#set! "kind" "Event")) @symbol
 
@@ -70,8 +74,9 @@
 (list
   (symbol (special_form) @_type)
   (#eq? @_type "def")
+  .
   (symbol (identifier) @name)
-  (#set! "kind" "Variable")) @symbol
+  (#set! "kind" "Constant")) @symbol
 
 ; (test NAME ...) - Test definitions
 (list

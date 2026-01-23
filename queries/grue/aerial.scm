@@ -7,7 +7,7 @@
   (#eq? @_type "room")
   .
   (entity_ref) @name
-  (#set! "kind" "Namespace")) @symbol
+  (#set! "kind" "Module")) @symbol
 
 ; (object NAME ...) - Object definitions
 (list
@@ -33,13 +33,13 @@
   (#eq? @_type "event")
   .
   (symbol (identifier) @name)
-  (#set! "kind" "Event")) @symbol
+  (#set! "kind" "Function")) @symbol
 
 ; (victory ...) - Victory condition
 (list
   (symbol (defform) @_type)
   (#eq? @_type "victory")
-  (#set! "kind" "Constant")
+  (#set! "kind" "Enum")
   (#set! "name" "victory")) @symbol
 
 ; (defeat NAME ...) - Defeat conditions
@@ -47,7 +47,7 @@
   (symbol (defform) @_type)
   (#eq? @_type "defeat")
   (symbol (identifier) @name)
-  (#set! "kind" "Constant")) @symbol
+  (#set! "kind" "Enum")) @symbol
 
 ; (default VERB ...) - Default behaviors
 (list
@@ -76,7 +76,7 @@
   (#eq? @_type "def")
   .
   (symbol (identifier) @name)
-  (#set! "kind" "Constant")) @symbol
+  (#set! "kind" "Enum")) @symbol
 
 ; (test NAME ...) - Test definitions
 (list

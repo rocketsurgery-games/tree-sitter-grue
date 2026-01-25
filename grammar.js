@@ -365,13 +365,8 @@ module.exports = grammar({
     // General identifier (catch-all for other symbols)
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_?!-]*/,
 
-    // Strings with escape sequences
-    string: ($) =>
-      seq(
-        '"',
-        repeat(choice(/[^"\\]+/, seq("\\", /./))),
-        '"'
-      ),
+    // Strings with escape sequences (must be atomic token to avoid comment parsing inside)
+    string: ($) => /"([^"\\]|\\.)*"/,
 
     // Numbers (integers, optionally negative)
     number: ($) => /-?[0-9]+/,

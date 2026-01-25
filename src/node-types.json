@@ -174,11 +174,6 @@
     "fields": {}
   },
   {
-    "type": "string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "symbol",
     "named": true,
     "fields": {},
@@ -243,10 +238,6 @@
     "fields": {}
   },
   {
-    "type": "\"",
-    "named": false
-  },
-  {
     "type": "%",
     "named": false
   },
@@ -304,10 +295,6 @@
   },
   {
     "type": ">=",
-    "named": false
-  },
-  {
-    "type": "\\",
     "named": false
   },
   {
@@ -965,6 +952,10 @@
   {
     "type": "str",
     "named": false
+  },
+  {
+    "type": "string",
+    "named": true
   },
   {
     "type": "success",

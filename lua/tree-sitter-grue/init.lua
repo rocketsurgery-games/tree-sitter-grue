@@ -44,33 +44,13 @@ function M.setup_aerial()
     return
   end
 
-  -- Extend Aerial's filter_kind to include GRUE kinds for grue filetype
-  -- This uses Aerial's per-filetype configuration
-  local current_config = aerial.get_config()
-  if current_config then
-    -- If user has filter_kind = false, all kinds already shown
-    if current_config.filter_kind == false then
-      return
-    end
-
-    -- Add GRUE kinds to filter if it's a table
-    if type(current_config.filter_kind) == "table" then
-      local kinds_set = {}
-      for _, k in ipairs(current_config.filter_kind) do
-        kinds_set[k] = true
-      end
-      for _, k in ipairs(M.aerial_kinds) do
-        kinds_set[k] = true
-      end
-      -- Convert back to list
-      local new_kinds = {}
-      for k in pairs(kinds_set) do
-        table.insert(new_kinds, k)
-      end
-      -- Re-setup aerial with expanded kinds
-      aerial.setup({ filter_kind = new_kinds })
-    end
-  end
+  -- Configure Aerial for grue filetype
+  -- aerial.setup() merges configs, so this won't clobber user settings
+  aerial.setup({
+    filter_kind = {
+      grue = false,  -- show all symbol kinds for grue files
+    },
+  })
 end
 
 -- Auto-setup when required

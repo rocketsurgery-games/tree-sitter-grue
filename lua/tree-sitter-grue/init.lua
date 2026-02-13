@@ -22,15 +22,27 @@ function M.setup()
     return
   end
 
-  local parser_config = parsers.get_parser_configs()
-  parser_config.grue = {
-    install_info = {
-      url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
-      files = { "src/parser.c" },
-      branch = "main",
-    },
-    filetype = "grue",
-  }
+  -- Register the grue parser with nvim-treesitter.
+  -- The main branch uses a plain table (assign directly);
+  -- the legacy master branch used get_parser_configs().
+  if type(parsers.get_parser_configs) == "function" then
+    local parser_config = parsers.get_parser_configs()
+    parser_config.grue = {
+      install_info = {
+        url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "grue",
+    }
+  else
+    parsers.grue = {
+      install_info = {
+        url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
+        branch = "main",
+      },
+    }
+  end
 
   vim.filetype.add({ extension = { grue = "grue" } })
 

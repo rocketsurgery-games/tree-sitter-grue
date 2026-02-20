@@ -1,0 +1,26 @@
+{
+  "grammars": [
+    {
+      "name": "grue",
+      "camelcase": "Grue",
+      "scope": "source.grue",
+      "path": ".",
+      "file-types": ["grue"],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for GRUE (Game Runtime for Universal Experiences)"
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": true,
+    "rust": false,
+    "swift": true
+  }
+}

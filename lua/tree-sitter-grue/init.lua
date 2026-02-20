@@ -16,35 +16,13 @@ M.aerial_kinds = {
 }
 
 function M.setup()
-  local ok, parsers = pcall(require, "nvim-treesitter.parsers")
-  if not ok then
-    vim.notify("tree-sitter-grue: nvim-treesitter not found", vim.log.levels.WARN)
-    return
-  end
-
-  -- Register the grue parser with nvim-treesitter.
-  -- The main branch uses a plain table (assign directly);
-  -- the legacy master branch used get_parser_configs().
-  if type(parsers.get_parser_configs) == "function" then
-    local parser_config = parsers.get_parser_configs()
-    parser_config.grue = {
-      install_info = {
-        url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
-        files = { "src/parser.c" },
-        branch = "main",
-      },
-      filetype = "grue",
-    }
-  else
-    parsers.grue = {
-      install_info = {
-        url = "https://github.com/rocketsurgery-games/tree-sitter-grue",
-        branch = "main",
-      },
-    }
-  end
-
+  -- Register the grue filetype
   vim.filetype.add({ extension = { grue = "grue" } })
+
+  -- Register the grue language with neovim's tree-sitter.
+  -- The parser .so lives in parser/grue.so within this plugin's runtimepath,
+  -- so neovim finds it automatically.
+  vim.treesitter.language.register("grue", "grue")
 
   -- Configure Aerial to show GRUE symbol kinds (if Aerial is loaded)
   M.setup_aerial()

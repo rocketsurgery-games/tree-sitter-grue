@@ -1,0 +1,10 @@
+id = "grue"
+name = "Grue"
+version = "0.1.0"
+schema_version = 1
+authors = ["Joel"]
+description = "Language support for Grue (Game Runtime for Universal Experiences)"
+
+[grammars.grue]
+repository = "file:///Users/joel/src/rs/tree-sitter-grue"
+rev = "f3c804f1f531c69d82c7769aaaa9359477e09a8b"
